@@ -1,0 +1,23 @@
+# GPG Keys (security)
+repo-key/
+private.asc
+*.asc
+
+# Build artifacts
+repo/
+*.deb
+dl/
+pkg/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+/.history

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSH Pilot APT Repository</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            border-bottom: 3px solid #0066cc;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #555;
+            margin-top: 30px;
+        }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: "Courier New", monospace;
+        }
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f8;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 20px 0;
+        }
+        .info {
+            background: #d1ecf1;
+            border-left: 4px solid #0dcaf0;
+            padding: 12px;
+            margin: 20px 0;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SSH Pilot APT Repository</h1>
+        
+        <p>This is an unofficial APT repository for <strong>SSH Pilot</strong>, a tool for managing SSH connections.</p>
+
+        <div class="info">
+            <strong>Official Project:</strong> <a href="https://github.com/mfat/sshpilot" target="_blank">github.com/mfat/sshpilot</a>
+        </div>
+
+        <h2>Installation</h2>
+        
+        <p>To use this repository, follow these steps:</p>
+
+        <h3>1. Add the GPG key</h3>
+        <pre><code>curl -fsSL https://mahdi.github.io/sshpilot-ppa/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/sshpilot-ppa.gpg</code></pre>
+
+        <h3>2. Add the repository</h3>
+        <pre><code>echo "deb [signed-by=/usr/share/keyrings/sshpilot-ppa.gpg arch=amd64] https://mahdi.github.io/sshpilot-ppa any main" | sudo tee /etc/apt/sources.list.d/sshpilot-ppa.list</code></pre>
+
+        <h3>3. Update and install</h3>
+        <pre><code>sudo apt update
+sudo apt install sshpilot</code></pre>
+
+        <h2>Updating</h2>
+        <p>Once installed, you can update SSH Pilot along with your other packages:</p>
+        <pre><code>sudo apt update && sudo apt upgrade</code></pre>
+
+        <h2>Uninstallation</h2>
+        <p>To remove SSH Pilot and this repository:</p>
+        <pre><code># Remove the package
+sudo apt remove sshpilot
+
+# Remove the repository
+sudo rm /etc/apt/sources.list.d/sshpilot-ppa.list
+sudo rm /usr/share/keyrings/sshpilot-ppa.gpg
+
+# Update package lists
+sudo apt update</code></pre>
+
+        <div class="warning">
+            <strong>Note:</strong> This is an unofficial repository. The packages are automatically fetched from the official SSH Pilot releases and republished here for convenience.
+        </div>
+
+        <h2>About</h2>
+        <p>This repository is automatically updated when new versions of SSH Pilot are released. The packages are signed with a GPG key for security.</p>
+        
+        <p><small>Repository maintained via GitHub Actions • Last updated: <span id="date"></span></small></p>
+    </div>
+
+    <script>
+        document.getElementById('date').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+</html>
+

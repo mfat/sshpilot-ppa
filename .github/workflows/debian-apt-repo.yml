@@ -1,0 +1,76 @@
+name: Build & Publish Debian Package
+
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    # Check for updates daily at 3am UTC
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-and-publish:
+    permissions:
+      pages: write
+      contents: write
+    environment: Main
+    runs-on: ubuntu-latest
+    env:
+      DISTRIBUTION: any
+      COMPONENT: main
+      ARCHITECTURE: amd64
+      GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+      KEY_ID: ${{ vars.KEY_ID }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y reprepro dpkg-dev curl jq gnupg debsigs
+
+      - name: Import GPG key
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --batch --import
+          echo "$KEY_ID:6:" | gpg --batch --import-ownertrust --pinentry-mode=loopback
+
+      - name: Determine latest sshpilot version
+        id: get-version
+        run: |
+          TAG=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.tag_name')
+          VERSION=${TAG#v}
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Download latest sshpilot binary
+        run: |
+          DOWNLOAD_URL=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[] | select(.name | contains("x86_64")) | select(.name | endswith(".deb")) | .browser_download_url')
+          echo "Downloading from: $DOWNLOAD_URL"
+          curl -L "$DOWNLOAD_URL" -o sshpilot.deb
+
+      - name: Sign Debian package
+        run: |
+          debsigs -v --gpgopts="--batch --no-tty --pinentry-mode=loopback" --sign=origin --default-key="$KEY_ID" sshpilot.deb
+
+      - name: Create APT repository with reprepro
+        run: |
+          mkdir -p repo/conf
+          echo "Origin: GitHub" >repo/conf/distributions
+          echo "Label: GitHub SSH Pilot" >>repo/conf/distributions
+          echo "Suite: stable" >>repo/conf/distributions
+          echo "Codename: ${DISTRIBUTION}" >>repo/conf/distributions
+          echo "Components: ${COMPONENT}" >>repo/conf/distributions
+          echo "Architectures: ${ARCHITECTURE}" >>repo/conf/distributions
+          echo "SignWith: $KEY_ID" >>repo/conf/distributions
+          reprepro -Vb repo includedeb ${DISTRIBUTION} sshpilot.deb
+          cp pubkey.gpg repo/pubkey.gpg
+          cp index.html repo/
+
+      - name: Deploy APT repository to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./repo
+
