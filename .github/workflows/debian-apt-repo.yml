@@ -47,7 +47,13 @@ jobs:
 
       - name: Download latest sshpilot binary
         run: |
-          DOWNLOAD_URL=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[] | select(.name | contains("x86_64")) | select(.name | endswith(".deb")) | .browser_download_url')
+          DOWNLOAD_URL=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[] | select(.name | endswith("_all.deb")) | .browser_download_url')
+          if [ -z "$DOWNLOAD_URL" ]; then
+            echo "Error: Could not find a .deb package in the latest release"
+            echo "Available assets:"
+            curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[].name'
+            exit 1
+          fi
           echo "Downloading from: $DOWNLOAD_URL"
           curl -L "$DOWNLOAD_URL" -o sshpilot.deb
 
