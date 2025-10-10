@@ -21,7 +21,7 @@ jobs:
       COMPONENT: main
       ARCHITECTURE: amd64
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-      KEY_ID: ${{ vars.KEY_ID }}
+      KEY_ID: ${{ secrets.KEY_ID }}
 
     steps:
       - name: Checkout repository
