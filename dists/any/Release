@@ -1,0 +1,19 @@
+Origin: GitHub
+Label: GitHub SSH Pilot
+Suite: stable
+Codename: any
+Date: Fri, 10 Oct 2025 03:07:23 UTC
+Architectures: amd64
+Components: main
+MD5Sum:
+ 874856f8dcef19f071524aadaf7f0832 890 main/binary-amd64/Packages
+ c96f5f73c5d088fbb72576f443b2b2bc 553 main/binary-amd64/Packages.gz
+ 751465677ee1d575e6d0f9f26dc1bbba 91 main/binary-amd64/Release
+SHA1:
+ c11b35e4a64628aec6d841ce817c82d05de3656e 890 main/binary-amd64/Packages
+ 29c1747df80920275567c2923cbae5d8bccb6428 553 main/binary-amd64/Packages.gz
+ 6791f7da99ed6bc5ec4de32b58016926f1f1d1ca 91 main/binary-amd64/Release
+SHA256:
+ a7846f52b54b1b55e53743624577e4e543e9d1e3e1e47ddb98b28df066d9158c 890 main/binary-amd64/Packages
+ 95cec994d8e2fab61c9c3b56892ad052a08dec92b40806497c7d58c612873643 553 main/binary-amd64/Packages.gz
+ 8eb1956a5bdf4eedf4289f7924a436d3eab8df5dca8aa52ffcfc708630773edc 91 main/binary-amd64/Release

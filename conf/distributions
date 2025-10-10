@@ -1,0 +1,7 @@
+Origin: GitHub
+Label: GitHub SSH Pilot
+Suite: stable
+Codename: any
+Components: main
+Architectures: amd64
+SignWith: F9DC10F379BF80CE9E7E03C31B1F0E86070ED93A
