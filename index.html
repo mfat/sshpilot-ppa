@@ -203,19 +203,9 @@ sudo rm /usr/share/keyrings/sshpilot-ppa.gpg
 sudo apt update</code></pre>
             <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         </div>
-
-        <div class="info">
-            <strong>Note:</strong> This repository is automatically updated when new SSH Pilot releases are published. The packages are signed with a GPG key for security.
-        </div>
-
-        <h2>About</h2>
-        <p>This repository is automatically updated daily to include the latest SSH Pilot releases. All packages are signed with GPG for security and verified during installation.</p>
-        
-        <p><small>Repository maintained via GitHub Actions • Last updated: <span id="date"></span></small></p>
     </div>
 
     <script>
-        document.getElementById('date').textContent = new Date().toLocaleDateString();
 
         function copyCode(button) {
             const codeBlock = button.previousElementSibling;
