@@ -9,9 +9,9 @@ Priority: optional
 Section: utils
 Filename: pool/main/s/sshpilot/sshpilot_4.3.6-1_all.deb
 Size: 332988
-SHA256: c1dfc70b16100c83c2ccf51e6afbc6fa14b4fd6fc55750e62d6d89920583dca2
-SHA1: a46bff834fbdc266a1aef8718a62a9ac06a62d83
-MD5sum: da122531c9f66d96eb2ec2246473812e
+SHA256: 5719359e9da40e92ac56bf8f9d5d75a63a7d3676e6348a25ad2761ad9336eb00
+SHA1: f045200b0f31fe2dbb7a774a2a31c8bfde6e8af4
+MD5sum: e370de28bc0dc7252b0ca6e1215a7ec7
 Description: SSH connection manager with integrated terminal
  sshPilot provides SSH connection management, integrated terminal using VTE,
  tunneling, key management, and tabbed interface.
