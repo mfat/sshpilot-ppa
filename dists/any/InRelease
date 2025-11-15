@@ -5,34 +5,34 @@ Origin: GitHub
 Label: GitHub SSH Pilot
 Suite: stable
 Codename: any
-Date: Fri, 14 Nov 2025 03:45:17 UTC
+Date: Sat, 15 Nov 2025 03:39:52 UTC
 Architectures: amd64
 Components: main
 MD5Sum:
- 02fd8e979ec15ff023e8ea7dc3e1866c 890 main/binary-amd64/Packages
- 5dda0586f494fb291d3a65668c03736e 552 main/binary-amd64/Packages.gz
+ e4192f58cbcf97721e5c57e34efd94f6 890 main/binary-amd64/Packages
+ 900439766da2cec6ed110cc60b971e24 554 main/binary-amd64/Packages.gz
  751465677ee1d575e6d0f9f26dc1bbba 91 main/binary-amd64/Release
 SHA1:
- a7bd4cd0426c38e7d6b2bfe9eaede06dc882370c 890 main/binary-amd64/Packages
- 72b44a528c18e51d754cee3affc025cf355ea503 552 main/binary-amd64/Packages.gz
+ 40fb09ad62f148de50381bcf927f988337d0da26 890 main/binary-amd64/Packages
+ e2ab60ee2b778ac7a2d9cb5d72137708c38763a5 554 main/binary-amd64/Packages.gz
  6791f7da99ed6bc5ec4de32b58016926f1f1d1ca 91 main/binary-amd64/Release
 SHA256:
- a97c7080ce4c5626e07cd19d467bb87faac88113d7b05186321e3b9e584ecb04 890 main/binary-amd64/Packages
- f252f495096e476a9c9fb8dac1b300a05f583f46d8e17585ed45f45194023e95 552 main/binary-amd64/Packages.gz
+ 3e1bd5835bb55c6b7a88b9076b50feb6e14a2b89da8bb2c8aee1678e1911caff 890 main/binary-amd64/Packages
+ ecff0a00cb298c0d089b3c5ed206bdd81f0cbb9ff7b6b4ec1e7d28e3d8c1dd44 554 main/binary-amd64/Packages.gz
  8eb1956a5bdf4eedf4289f7924a436d3eab8df5dca8aa52ffcfc708630773edc 91 main/binary-amd64/Release
 -----BEGIN PGP SIGNATURE-----
 
-iQIzBAEBCgAdFiEE+dwQ83m/gM6efgPDGx8OhgcO2ToFAmkWpc0ACgkQGx8OhgcO
-2Toemg/+JCy4pYkdaNge86mkatRZSz0ozkIzHY6LxjGY+xDKWY3Bm0zObDhj0W4j
-k3k6nox/aecTBib54P/NhatymKBUdmhe5T0hI9pXgml+HfsL9B8OJEzzDJixkP1N
-R9mNKk5wuOPmeckeDTvUhCN0GUiqa9ijZWxRwmktuCT5Jt4LhLp/y34FYh1S39s8
-RVS9VgNz7P9xU2iOyGZVLhN9UeC9u0tsGbh2nJ9GeBIY/N7wsJQeSb49chJGFp0S
-kq8Rk/UjLr1AdeOSOUMwT+yAQPCICmEDvphHRFsKsNq1mAhSL9wbdBjJ22oguOLH
-CZ21IVHVY402n9VCGPLsYmuEOpcugPfU5hYncxHyLMCrAx3rPwtvkAN+hCBS0/6p
-L6PeTcgPLfiau4ebGUUZGlcnqWbVSgg4rKaC3/5xgfLee5cqDG2wfxptJ0x/rMc/
-CGsUQP6EwXIDG7wQf/RTKIzoNJHaRG+zhOJOsJvMAaojQHAIsCWPpFru7i5Mw9bN
-9iDpxHFJDuQfEp1bPO73o1vqnBcAhqUYHkQxvc3j3BsVtj83EVrT/6dh3eqzi/Hc
-uE+6Wrtf9qlH3GJPAGYbM9CN+uRTUaXGL+mfGC/A22C89p+55qw3sOsp8x0BZPzq
-Ci1fW36zMgSLgZj+jqvWB0k3pxr9Ib507mtrnngoIDB95yPgVWk=
-=pUFf
+iQIzBAEBCgAdFiEE+dwQ83m/gM6efgPDGx8OhgcO2ToFAmkX9ggACgkQGx8OhgcO
+2To4hg//RRhsVw2yFORQzn4B2XWsrWZXKxjUhbgt0sOcu8P7RHKYZA8LcSO16h1w
+yYB9MHCRP+GKcUVUcSVXUZdOLkZ1WLtaImCinr3xW21+5yhRiErYYIIpU2HNjDTU
+nP/xDMizi9RaapERWLjGK2988yOFPnSYzAJa/kfoKvBTR4PMj5bPf7oQVQpZvB9V
+bb8hfJYz0Wq8b3VQRnWoR4D1A4GNFdUR9b+eAPSskcyJQj16ffc6Aw5hjRf1JgK0
+qvlUzQrQdZ60WJop6lY2obIThagsXH4rpcxy59UlHFn3Ew9JVtsocQMhZ0NCx1b6
+rK1cTsQKIVVlYmrlfYVjST1eyFHEmL0uASsWR/MLIKb4EQH4n2WyAXUTgg80xY2A
+NoHhyyL1mgJEFT9c2CSAPK1FQNyaz6Jd5e2xy5mxscNpCjQ9Nidgd254p60JTBZZ
+Au5LXNzHeCg2vG4iGyHpMHjqYMOFalOnhEanKS3B28KaKeOqWb8xBIO4Vsp0l5UH
+nbuwY6d7IqLM4jN0EC8JlStGJwoHNFQJ74V5H4m4wsOmf/o2rogZfMnEtM4K6oN1
+rBHxaUdp0xawilHMCs02bW105h6FlDyV6Ar+F7mNDxJLFA/2kUQQSrMI0iCiiwQ+
+FiOkJ1exFVVOvSVmcxmLMLT8Yhc5MugQ2gHmC8db/firgJS0opM=
+=L1Wy
 -----END PGP SIGNATURE-----
