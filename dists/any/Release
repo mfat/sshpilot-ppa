@@ -2,18 +2,18 @@ Origin: GitHub
 Label: GitHub SSH Pilot
 Suite: stable
 Codename: any
-Date: Fri, 21 Nov 2025 03:43:37 UTC
+Date: Sat, 22 Nov 2025 03:37:36 UTC
 Architectures: amd64
 Components: main
 MD5Sum:
- 52387fd18d7ecf56e71540ab9e41fb92 890 main/binary-amd64/Packages
- 5bbcf0b55099433a8271b0dfa022e862 554 main/binary-amd64/Packages.gz
+ ba6ef3509cf8105559620e30c1553018 890 main/binary-amd64/Packages
+ 50b309f81d56676029bcc5c365dda215 555 main/binary-amd64/Packages.gz
  751465677ee1d575e6d0f9f26dc1bbba 91 main/binary-amd64/Release
 SHA1:
- a53bb36ef12bb774d5d238203ddd9950aa5a934d 890 main/binary-amd64/Packages
- a41ec2085dce709d8e804bc621fe8147767cd731 554 main/binary-amd64/Packages.gz
+ 45d2e414f6ca792d405893937adb8340d01662f2 890 main/binary-amd64/Packages
+ ff34b41f7a13e28c8398c03375e0f7923a98430c 555 main/binary-amd64/Packages.gz
  6791f7da99ed6bc5ec4de32b58016926f1f1d1ca 91 main/binary-amd64/Release
 SHA256:
- a515afa850ba1295e59e57ae438b9a0d38337ce232209b380a5c369f054ede15 890 main/binary-amd64/Packages
- c0c7058f884844b93a680910c8b57d2ec61260b46cf1bcaf44aa263b2152158d 554 main/binary-amd64/Packages.gz
+ 1201d4b8c6a994d680f8e4780b2909e756b057077da74f6aab53e9151fa12c6d 890 main/binary-amd64/Packages
+ 9e9afe20a4ffa60e8d4db56bab9cbe0823c98cf4ba88cf1355bd2f2d4dd6f4f1 555 main/binary-amd64/Packages.gz
  8eb1956a5bdf4eedf4289f7924a436d3eab8df5dca8aa52ffcfc708630773edc 91 main/binary-amd64/Release
