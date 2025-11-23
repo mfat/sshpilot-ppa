@@ -1,17 +1,17 @@
 Package: sshpilot
-Version: 4.4.1-1
+Version: 4.4.4-1
 Architecture: all
 Maintainer: mFat <newmfat@gmail.com>
-Installed-Size: 1988
+Installed-Size: 2001
 Depends: python3, python3-gi, python3-gi-cairo, libgtk-4-1 (>= 4.6), gir1.2-gtk-4.0 (>= 4.6), libadwaita-1-0 (>= 1.4), gir1.2-adw-1 (>= 1.4), libvte-2.91-gtk4-0 (>= 0.70), gir1.2-vte-3.91 (>= 0.70), python3-paramiko, python3-cryptography, python3-secretstorage, ssh-askpass, sshpass
 Homepage: https://github.com/mfat/sshpilot
 Priority: optional
 Section: utils
-Filename: pool/main/s/sshpilot/sshpilot_4.4.1-1_all.deb
-Size: 343638
-SHA256: c3aedfb15f527c80eaf462cb78e6647739c73b8c3a33d2baa89a9bfa441b750c
-SHA1: 15bc89550bf89c9fb0df61753e380f6fb608e77e
-MD5sum: 6b58aa480ed5bee0493c5562ad1b340a
+Filename: pool/main/s/sshpilot/sshpilot_4.4.4-1_all.deb
+Size: 345860
+SHA256: 34197c48c9ee4c3269b12beecf1288dfc1785b6170fa2c69906821509b89f4d7
+SHA1: ea69fbe3c229e890153c4fcc3654b870f97c629b
+MD5sum: cb4e1121f0a7ba2ecb4d32b8bbf29888
 Description: SSH connection manager with integrated terminal
  sshPilot provides SSH connection management, integrated terminal using VTE,
  tunneling, key management, and tabbed interface.
