@@ -1,17 +1,17 @@
 Package: sshpilot
-Version: 4.7.1-1
+Version: 4.7.2-1
 Architecture: all
 Maintainer: mFat <newmfat@gmail.com>
-Installed-Size: 2594
+Installed-Size: 2612
 Depends: python3, python3-gi, python3-gi-cairo, libgtk-4-1 (>= 4.6), gir1.2-gtk-4.0 (>= 4.6), libadwaita-1-0 (>= 1.4), gir1.2-adw-1 (>= 1.4), libvte-2.91-gtk4-0 (>= 0.70), gir1.2-vte-3.91 (>= 0.70), libgtksourceview-5-0 (>= 5.0), gir1.2-gtksource-5 (>= 5.0), python3-paramiko, python3-cryptography, python3-secretstorage, gir1.2-webkit-6.0, python3-flask, python3-flask-socketio, ssh-askpass, sshpass
 Homepage: https://github.com/mfat/sshpilot
 Priority: optional
 Section: utils
-Filename: pool/main/s/sshpilot/sshpilot_4.7.1-1_all.deb
-Size: 420200
-SHA256: 29355e3796cd92a6376b43e306c9f2c01bae522727c253331b7c464c43e0fb9d
-SHA1: b18f32594185b3b867cd23152ddf916d1758af99
-MD5sum: f7855027576e3c76176a00bdcf856d70
+Filename: pool/main/s/sshpilot/sshpilot_4.7.2-1_all.deb
+Size: 422346
+SHA256: 9def8a5984e0bde45322d01ad7e9dbb15b8f2e773660725789d765e7f2040d04
+SHA1: 53c144c33d672a482f6050910de1c03e1e5f9ab1
+MD5sum: 86e7a7c3157664b36d1e6f91f8d6fab9
 Description: Manage your servers with ease
  SSH Pilot is a user-friendly SSH connection manager featuring built-in tabbed
  terminal, remote file management, key transfer, port forwarding and more.
