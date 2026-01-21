@@ -9,9 +9,9 @@ Priority: optional
 Section: utils
 Filename: pool/main/s/sshpilot/sshpilot_4.7.9-1_all.deb
 Size: 433524
-SHA256: a8639a6be840600a65cd3caf882c2ff042b8465348127e9075585f16acaa6bf9
-SHA1: f03a412ce4c6345b235ead2c4096c14a44b75582
-MD5sum: b5657bbe89c33613ff0b0f4294c043df
+SHA256: d67ee223b28df64fa943123dc32ab7e4dcf987ac004f8b135b3dff283efc81c7
+SHA1: a136e541da327709a60da146a180a26256ca8900
+MD5sum: 5ae9496d0a20527bbae7cc6f38a085ea
 Description: Manage your servers with ease
  SSH Pilot is a user-friendly SSH connection manager featuring built-in tabbed
  terminal, remote file management, key transfer, port forwarding and more.
