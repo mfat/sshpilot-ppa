@@ -8,10 +8,10 @@ This repository automatically publishes the latest version of [SSH Pilot](https:
 
 ```bash
 # Add the GPG key
-curl -fsSL https://YOUR_USERNAME.github.io/sshpilot-ppa/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/sshpilot-ppa.gpg
+curl -fsSL https://mfat.github.io/sshpilot-ppa/pubkey.gpg | sudo gpg --dearmor -o /usr/share/keyrings/sshpilot-ppa.gpg
 
 # Add the repository
-echo "deb [signed-by=/usr/share/keyrings/sshpilot-ppa.gpg arch=amd64] https://YOUR_USERNAME.github.io/sshpilot-ppa any main" | sudo tee /etc/apt/sources.list.d/sshpilot-ppa.list
+echo "deb [signed-by=/usr/share/keyrings/sshpilot-ppa.gpg arch=amd64] https://mfat.github.io/sshpilot-ppa any main" | sudo tee /etc/apt/sources.list.d/sshpilot-ppa.list
 
 # Install
 sudo apt update
