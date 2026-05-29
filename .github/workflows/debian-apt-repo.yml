@@ -8,6 +8,9 @@ on:
     # Check for updates daily at 3am UTC
     - cron: '0 3 * * *'
   workflow_dispatch:
+  repository_dispatch:
+    types:
+      - sshpilot_release_published
 
 jobs:
   build-and-publish:
@@ -27,6 +30,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Show trigger context
+        run: |
+          echo "Event name: ${{ github.event_name }}"
+          echo "Dispatched tag: ${{ github.event.client_payload.tag || 'n/a' }}"
+          echo "Dispatched release URL: ${{ github.event.client_payload.release_html_url || 'n/a' }}"
+
       - name: Install dependencies
         run: |
           sudo apt-get update
@@ -38,20 +47,31 @@ jobs:
           FINGERPRINT=$(gpg --list-secret-keys --with-colons | grep '^fpr:' | head -n1 | cut -d: -f10)
           echo "$FINGERPRINT:6:" | gpg --batch --import-ownertrust
 
-      - name: Determine latest sshpilot version
+      - name: Determine target sshpilot version
         id: get-version
         run: |
-          TAG=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.tag_name')
+          if [ "${{ github.event_name }}" = "repository_dispatch" ] && [ -n "${{ github.event.client_payload.tag }}" ]; then
+            TAG="${{ github.event.client_payload.tag }}"
+            echo "Using tag from repository_dispatch payload: $TAG"
+          else
+            TAG=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.tag_name')
+            echo "Using latest release tag: $TAG"
+          fi
           VERSION=${TAG#v}
+          echo "tag=$TAG" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Download latest sshpilot binary
+      - name: Download target sshpilot binary
         run: |
-          DOWNLOAD_URL=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[] | select(.name | endswith("_all.deb")) | .browser_download_url')
+          RELEASE_API_URL="https://api.github.com/repos/mfat/sshpilot/releases/tags/${{ steps.get-version.outputs.tag }}"
+          if [ "${{ github.event_name }}" != "repository_dispatch" ]; then
+            RELEASE_API_URL="https://api.github.com/repos/mfat/sshpilot/releases/latest"
+          fi
+          DOWNLOAD_URL=$(curl -s "$RELEASE_API_URL" | jq -r '.assets[] | select(.name | endswith("_all.deb")) | .browser_download_url')
           if [ -z "$DOWNLOAD_URL" ]; then
-            echo "Error: Could not find a .deb package in the latest release"
+            echo "Error: Could not find a .deb package in the selected release"
             echo "Available assets:"
-            curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[].name'
+            curl -s "$RELEASE_API_URL" | jq -r '.assets[].name'
             exit 1
           fi
           echo "Downloading from: $DOWNLOAD_URL"
@@ -80,4 +100,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./repo
-
