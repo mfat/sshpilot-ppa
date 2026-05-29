@@ -14,70 +14,106 @@ jobs:
     permissions:
       pages: write
       contents: write
+      actions: read
     environment: Main
     runs-on: ubuntu-latest
     env:
-      DISTRIBUTION: any
+      DISTRIBUTION: sshpilot
       COMPONENT: main
-      ARCHITECTURE: amd64
+      ARCHITECTURE: all
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       KEY_ID: ${{ secrets.KEY_ID }}
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y reprepro dpkg-dev curl jq gnupg debsigs
+          sudo apt-get install -y reprepro dpkg-dev curl jq gnupg
 
       - name: Import GPG key
         run: |
           echo "$GPG_PRIVATE_KEY" | gpg --batch --import
-          FINGERPRINT=$(gpg --list-secret-keys --with-colons | grep '^fpr:' | head -n1 | cut -d: -f10)
+          FINGERPRINT=$(gpg --list-secret-keys --with-colons "$KEY_ID" | grep '^fpr:' | head -n1 | cut -d: -f10)
           echo "$FINGERPRINT:6:" | gpg --batch --import-ownertrust
 
       - name: Determine latest sshpilot version
         id: get-version
         run: |
-          TAG=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.tag_name')
+          RELEASE=$(curl -fsSL -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/mfat/sshpilot/releases/latest)
+          TAG=$(echo "$RELEASE" | jq -r '.tag_name')
           VERSION=${TAG#v}
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
-
-      - name: Download latest sshpilot binary
-        run: |
-          DOWNLOAD_URL=$(curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[] | select(.name | endswith("_all.deb")) | .browser_download_url')
+          DOWNLOAD_URL=$(echo "$RELEASE" | jq -r '.assets[] | select(.name | endswith("_all.deb")) | .browser_download_url')
           if [ -z "$DOWNLOAD_URL" ]; then
-            echo "Error: Could not find a .deb package in the latest release"
+            echo "Error: Could not find a _all.deb package in the latest release"
             echo "Available assets:"
-            curl -s https://api.github.com/repos/mfat/sshpilot/releases/latest | jq -r '.assets[].name'
+            echo "$RELEASE" | jq -r '.assets[].name'
             exit 1
           fi
-          echo "Downloading from: $DOWNLOAD_URL"
-          curl -L "$DOWNLOAD_URL" -o sshpilot.deb
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "download_url=$DOWNLOAD_URL" >> $GITHUB_OUTPUT
 
-      - name: Sign Debian package
+      - name: Check if version already published
+        id: version-check
         run: |
-          debsigs -v --gpgopts="--batch --no-tty --pinentry-mode=loopback" --sign=origin --default-key="$KEY_ID" sshpilot.deb
+          PUBLISHED=$(cat .published-version 2>/dev/null || echo "none")
+          VERSION="${{ steps.get-version.outputs.version }}"
+          echo "published=$PUBLISHED"
+          echo "latest=$VERSION"
+          if [ "$PUBLISHED" = "$VERSION" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+            echo "skip=true" >> $GITHUB_OUTPUT
+            echo "Version $VERSION already published, skipping."
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download latest sshpilot package
+        if: steps.version-check.outputs.skip != 'true'
+        run: |
+          echo "Downloading from: ${{ steps.get-version.outputs.download_url }}"
+          curl -fL "${{ steps.get-version.outputs.download_url }}" -o sshpilot.deb
+
+      - name: Validate required repo files
+        if: steps.version-check.outputs.skip != 'true'
+        run: |
+          for f in pubkey.gpg index.html; do
+            [ -f "$f" ] || { echo "Error: required file '$f' not found in repo root"; exit 1; }
+          done
 
       - name: Create APT repository with reprepro
+        if: steps.version-check.outputs.skip != 'true'
         run: |
           mkdir -p repo/conf
-          echo "Origin: GitHub" >repo/conf/distributions
-          echo "Label: GitHub SSH Pilot" >>repo/conf/distributions
-          echo "Suite: stable" >>repo/conf/distributions
-          echo "Codename: ${DISTRIBUTION}" >>repo/conf/distributions
-          echo "Components: ${COMPONENT}" >>repo/conf/distributions
-          echo "Architectures: ${ARCHITECTURE}" >>repo/conf/distributions
-          echo "SignWith: $KEY_ID" >>repo/conf/distributions
+          cat > repo/conf/distributions <<EOF
+          Origin: GitHub
+          Label: GitHub SSH Pilot
+          Suite: stable
+          Codename: ${DISTRIBUTION}
+          Components: ${COMPONENT}
+          Architectures: ${ARCHITECTURE}
+          SignWith: $KEY_ID
+          EOF
           reprepro -Vb repo includedeb ${DISTRIBUTION} sshpilot.deb
           cp pubkey.gpg repo/pubkey.gpg
           cp index.html repo/
+          echo "${{ steps.get-version.outputs.version }}" > repo/.published-version
 
       - name: Deploy APT repository to GitHub Pages
+        if: steps.version-check.outputs.skip != 'true'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./repo
 
+      - name: Record published version
+        if: steps.version-check.outputs.skip != 'true'
+        run: |
+          echo "${{ steps.get-version.outputs.version }}" > .published-version
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .published-version
+          git diff --cached --quiet || git commit -m "chore: record published version ${{ steps.get-version.outputs.version }}"
+          git push origin main
