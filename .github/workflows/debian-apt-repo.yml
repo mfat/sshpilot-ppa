@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-  schedule:
-    # Check for updates daily at 3am UTC
-    - cron: '0 3 * * *'
   workflow_dispatch:
   repository_dispatch:
     types:
@@ -100,3 +97,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./repo
+
