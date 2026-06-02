@@ -8,10 +8,10 @@ Homepage: https://github.com/mfat/sshpilot
 Priority: optional
 Section: utils
 Filename: pool/main/s/sshpilot/sshpilot_5.1.1-1_all.deb
-Size: 478956
-SHA256: 2c0c089687b6ea9e9647165b55e0eb0318f2f5fbc566deb47d4342adceb4d1e7
-SHA1: 3855bf20c837ea92f5cddfaf6c00d4bfb88b9379
-MD5sum: 65aff77505884ce5604c92ec6fc7edcd
+Size: 478972
+SHA256: 333f652e650bb0ffeeac9d2a8daf07c496fe7e1be5194cb16600bf3bf6bb3c20
+SHA1: 892657ba3d0fc26648a743431602f99132fe57f0
+MD5sum: cf116c3d1f70471038c4eb3ab21d5f94
 Description: Manage your servers with ease
  SSH Pilot is a user-friendly SSH connection manager featuring built-in tabbed
  terminal, remote file management, key transfer, port forwarding and more.
