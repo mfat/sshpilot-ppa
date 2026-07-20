@@ -2,18 +2,27 @@ Origin: GitHub
 Label: GitHub SSH Pilot
 Suite: stable
 Codename: any
-Date: Mon, 20 Jul 2026 20:43:28 UTC
-Architectures: amd64
+Date: Mon, 20 Jul 2026 21:52:29 UTC
+Architectures: amd64 arm64
 Components: main
 MD5Sum:
- c9a85c2107721043447c555c0eec5062 989 main/binary-amd64/Packages
- 74b75244a6499fe09a1e61f16fb7dc8d 613 main/binary-amd64/Packages.gz
+ 12af801a886d2e647882b6dc77111a11 989 main/binary-amd64/Packages
+ 4fba642b75fcf5e464bc3aae9bb8e957 614 main/binary-amd64/Packages.gz
  751465677ee1d575e6d0f9f26dc1bbba 91 main/binary-amd64/Release
+ 12af801a886d2e647882b6dc77111a11 989 main/binary-arm64/Packages
+ 4fba642b75fcf5e464bc3aae9bb8e957 614 main/binary-arm64/Packages.gz
+ a859a4e0fd510c01e1906c4ddc36bfd7 91 main/binary-arm64/Release
 SHA1:
- 5500c2c603c984ad119d5e4be5858c56057ceca3 989 main/binary-amd64/Packages
- 2788682e620ac8a6d01e9d4be3328368549a5bd1 613 main/binary-amd64/Packages.gz
+ 79c7762c20e1dbbbac025ff5efea48a2a99984b2 989 main/binary-amd64/Packages
+ d094c0671910a7169612e3c51e28fcfe706da939 614 main/binary-amd64/Packages.gz
  6791f7da99ed6bc5ec4de32b58016926f1f1d1ca 91 main/binary-amd64/Release
+ 79c7762c20e1dbbbac025ff5efea48a2a99984b2 989 main/binary-arm64/Packages
+ d094c0671910a7169612e3c51e28fcfe706da939 614 main/binary-arm64/Packages.gz
+ c286a27ae5ed3fd33eb9f4dc24e7f55130311267 91 main/binary-arm64/Release
 SHA256:
- 20394e0ca2af4c2addadbeb86fa0499519be1977971b721a704ce3bc39072b06 989 main/binary-amd64/Packages
- e1143e7ae971134676ce8c1c609a06a90bb9c976ebbf5e18a92101825d96dbe7 613 main/binary-amd64/Packages.gz
+ ccbd203ee6bdea6562f5ead23ab0a64ff1962845b90b159026a84db7b13cecb2 989 main/binary-amd64/Packages
+ 637c69083a17f0fced407d67640d6c1703c6a093456c3e6469dc272ce06dd24a 614 main/binary-amd64/Packages.gz
  8eb1956a5bdf4eedf4289f7924a436d3eab8df5dca8aa52ffcfc708630773edc 91 main/binary-amd64/Release
+ ccbd203ee6bdea6562f5ead23ab0a64ff1962845b90b159026a84db7b13cecb2 989 main/binary-arm64/Packages
+ 637c69083a17f0fced407d67640d6c1703c6a093456c3e6469dc272ce06dd24a 614 main/binary-arm64/Packages.gz
+ 2e0343f0708c9c8ce99ec204200ab8a543c8a18519184e40cfd6480856165791 91 main/binary-arm64/Release
