@@ -19,7 +19,11 @@ jobs:
     env:
       DISTRIBUTION: any
       COMPONENT: main
-      ARCHITECTURE: amd64
+      # The package is Architecture: all, but apt fetches dists/*/binary-$(dpkg
+      # --print-architecture)/Packages -- so listing only amd64 left every arm64
+      # machine with a 404 on a package that would have run there fine. reprepro
+      # copies an arch:all package into each architecture's index.
+      ARCHITECTURE: amd64 arm64
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       KEY_ID: ${{ secrets.KEY_ID }}
 
