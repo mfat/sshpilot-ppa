@@ -1,18 +1,18 @@
 Package: sshpilot
-Version: 5.6.3-1
+Version: 5.6.4-1
 Architecture: all
 Maintainer: Mehdi <mah.fat@gmail.com>
-Installed-Size: 11057
+Installed-Size: 11060
 Depends: python3:any (>= 3.9~), python3-gi, python3-gi-cairo, gir1.2-gtk-4.0, gir1.2-adw-1 (>= 1.5), gir1.2-vte-3.91, gir1.2-gtksource-5, gir1.2-secret-1, python3-cryptography, python3-keyring, python3-secretstorage, python3-psutil, python3-certifi, libjs-xterm, openssh-client
 Recommends: sshpass, python3-pykeepass, gir1.2-webkit-6.0, ssh-askpass
 Homepage: https://github.com/mfat/sshpilot
 Priority: optional
 Section: net
-Filename: pool/main/s/sshpilot/sshpilot_5.6.3-1_all.deb
-Size: 3898136
-SHA256: e9a7429b030c1140524b2d0b693c2d39e89bd17a38497d40a79b71aa7ae889c9
-SHA1: b9299bfa844e1b0ff1764864ce23fa558272ee11
-MD5sum: 6711112e5fe433d5763fe4c6e6a9b92c
+Filename: pool/main/s/sshpilot/sshpilot_5.6.4-1_all.deb
+Size: 3898216
+SHA256: 13b2fe41fd73351808e1124ca52ef17c786a50799888db9a26f57e59d18f3253
+SHA1: 6d5c365729d57e6bb1c64047fa3bb0c77ab6f585
+MD5sum: c6e1747dc55472b60195fcac8cbb7769
 Description: modern, lightweight SSH connection manager
  SSH Pilot is a user-friendly, modern and lightweight SSH connection manager
  for Linux and macOS, with an integrated terminal and SFTP file manager.
