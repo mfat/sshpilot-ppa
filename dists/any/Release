@@ -2,27 +2,27 @@ Origin: GitHub
 Label: GitHub SSH Pilot
 Suite: stable
 Codename: any
-Date: Fri, 16 Oct 2026 19:34:00 UTC
+Date: Sun, 18 Oct 2026 10:56:17 UTC
 Architectures: amd64 arm64
 Components: main
 MD5Sum:
- 57c20f1c84cd810bce6eb467cf2bc7d7 1027 main/binary-amd64/Packages
- 2ff0fc0a07b7abdc3f670854f0e8a9ce 633 main/binary-amd64/Packages.gz
+ 129e2b63bc2189a7802ae2e68bed69fa 1027 main/binary-amd64/Packages
+ 1356d37063ab102d8ebab5db41c8a929 631 main/binary-amd64/Packages.gz
  751465677ee1d575e6d0f9f26dc1bbba 91 main/binary-amd64/Release
- 57c20f1c84cd810bce6eb467cf2bc7d7 1027 main/binary-arm64/Packages
- 2ff0fc0a07b7abdc3f670854f0e8a9ce 633 main/binary-arm64/Packages.gz
+ 129e2b63bc2189a7802ae2e68bed69fa 1027 main/binary-arm64/Packages
+ 1356d37063ab102d8ebab5db41c8a929 631 main/binary-arm64/Packages.gz
  a859a4e0fd510c01e1906c4ddc36bfd7 91 main/binary-arm64/Release
 SHA1:
- 09f73f836863f0ea311a3a0cb07000d6cc014420 1027 main/binary-amd64/Packages
- b8e04faf319e99c8685e967b8b61a1a51cf2e3e0 633 main/binary-amd64/Packages.gz
+ 4d3a8a136ef487c291eeeed908772a63574db790 1027 main/binary-amd64/Packages
+ 5f0fd7cd6b7882d402de7d3bd18b08fe989013d7 631 main/binary-amd64/Packages.gz
  6791f7da99ed6bc5ec4de32b58016926f1f1d1ca 91 main/binary-amd64/Release
- 09f73f836863f0ea311a3a0cb07000d6cc014420 1027 main/binary-arm64/Packages
- b8e04faf319e99c8685e967b8b61a1a51cf2e3e0 633 main/binary-arm64/Packages.gz
+ 4d3a8a136ef487c291eeeed908772a63574db790 1027 main/binary-arm64/Packages
+ 5f0fd7cd6b7882d402de7d3bd18b08fe989013d7 631 main/binary-arm64/Packages.gz
  c286a27ae5ed3fd33eb9f4dc24e7f55130311267 91 main/binary-arm64/Release
 SHA256:
- 1c6e42dd61131d2a4dcf46083b7f99395cdbb252d56582236792f133b16452a2 1027 main/binary-amd64/Packages
- b145657f1e8f85308cd990d5d41151566cb6fe4635b31b0f18b298fcbb62d08e 633 main/binary-amd64/Packages.gz
+ 98bf263b3874b1c43914dc23930fab927374f80b71bbcd60004d1089755b41f3 1027 main/binary-amd64/Packages
+ 273ed0ed3f546cf6cd9934e35079a5aa08519095f151093c86c557c6f0c4d4de 631 main/binary-amd64/Packages.gz
  8eb1956a5bdf4eedf4289f7924a436d3eab8df5dca8aa52ffcfc708630773edc 91 main/binary-amd64/Release
- 1c6e42dd61131d2a4dcf46083b7f99395cdbb252d56582236792f133b16452a2 1027 main/binary-arm64/Packages
- b145657f1e8f85308cd990d5d41151566cb6fe4635b31b0f18b298fcbb62d08e 633 main/binary-arm64/Packages.gz
+ 98bf263b3874b1c43914dc23930fab927374f80b71bbcd60004d1089755b41f3 1027 main/binary-arm64/Packages
+ 273ed0ed3f546cf6cd9934e35079a5aa08519095f151093c86c557c6f0c4d4de 631 main/binary-arm64/Packages.gz
  2e0343f0708c9c8ce99ec204200ab8a543c8a18519184e40cfd6480856165791 91 main/binary-arm64/Release
