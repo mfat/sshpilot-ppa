@@ -19,10 +19,9 @@ jobs:
     env:
       DISTRIBUTION: any
       COMPONENT: main
-      # The package is Architecture: all, but apt fetches dists/*/binary-$(dpkg
-      # --print-architecture)/Packages -- so listing only amd64 left every arm64
-      # machine with a 404 on a package that would have run there fine. reprepro
-      # copies an arch:all package into each architecture's index.
+      # apt fetches dists/*/binary-$(dpkg --print-architecture)/Packages, so
+      # both architectures are listed. Since sshPilot bundles gtk4-frdp, each
+      # gets its own .deb; an older arch:all release is copied into both.
       ARCHITECTURE: amd64 arm64
       GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
       KEY_ID: ${{ secrets.KEY_ID }}
@@ -62,25 +61,34 @@ jobs:
           echo "tag=$TAG" >> $GITHUB_OUTPUT
           echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Download target sshpilot binary
+      # One .deb per architecture since sshPilot bundles the compiled gtk4-frdp
+      # library behind RDP tabs (sshpilot_<ver>_amd64.deb, _arm64.deb); older
+      # releases have a single _all.deb. Take whichever the release carries.
+      - name: Download target sshpilot packages
         run: |
           RELEASE_API_URL="https://api.github.com/repos/mfat/sshpilot/releases/tags/${{ steps.get-version.outputs.tag }}"
           if [ "${{ github.event_name }}" != "repository_dispatch" ]; then
             RELEASE_API_URL="https://api.github.com/repos/mfat/sshpilot/releases/latest"
           fi
-          DOWNLOAD_URL=$(curl -s "$RELEASE_API_URL" | jq -r '.assets[] | select(.name | endswith("_all.deb")) | .browser_download_url')
-          if [ -z "$DOWNLOAD_URL" ]; then
+          URLS=$(curl -s "$RELEASE_API_URL" | jq -r '.assets[] | select(.name | test("^sshpilot_.*_(all|amd64|arm64)[.]deb$")) | .browser_download_url')
+          if [ -z "$URLS" ]; then
             echo "Error: Could not find a .deb package in the selected release"
             echo "Available assets:"
             curl -s "$RELEASE_API_URL" | jq -r '.assets[].name'
             exit 1
           fi
-          echo "Downloading from: $DOWNLOAD_URL"
-          curl -L "$DOWNLOAD_URL" -o sshpilot.deb
+          mkdir -p debs
+          for url in $URLS; do
+            echo "Downloading from: $url"
+            curl -fL "$url" -o "debs/$(basename "$url")"
+          done
+          ls -l debs
 
-      - name: Sign Debian package
+      - name: Sign Debian packages
         run: |
-          debsigs -v --gpgopts="--batch --no-tty --pinentry-mode=loopback" --sign=origin --default-key="$KEY_ID" sshpilot.deb
+          for deb in debs/*.deb; do
+            debsigs -v --gpgopts="--batch --no-tty --pinentry-mode=loopback" --sign=origin --default-key="$KEY_ID" "$deb"
+          done
 
       - name: Create APT repository with reprepro
         run: |
@@ -92,7 +100,7 @@ jobs:
           echo "Components: ${COMPONENT}" >>repo/conf/distributions
           echo "Architectures: ${ARCHITECTURE}" >>repo/conf/distributions
           echo "SignWith: $KEY_ID" >>repo/conf/distributions
-          reprepro -Vb repo includedeb ${DISTRIBUTION} sshpilot.deb
+          reprepro -Vb repo includedeb ${DISTRIBUTION} debs/*.deb
           cp pubkey.gpg repo/pubkey.gpg
           cp index.html repo/
 

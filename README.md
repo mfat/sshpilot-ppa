@@ -12,7 +12,7 @@ and elementary OS 8. The package needs libadwaita 1.5, which Debian 12 and
 Ubuntu 22.04 do not ship; on those, `apt install` fails with
 `Depends: gir1.2-adw-1 (>= 1.5) but it is not installable`.
 
-amd64 and arm64 are both published. The package itself is architecture-independent.
+amd64 and arm64 are both published, each with its own package.
 
 ```bash
 # Add the GPG key
