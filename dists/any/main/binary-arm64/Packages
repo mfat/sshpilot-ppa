@@ -11,9 +11,9 @@ Priority: optional
 Section: net
 Filename: pool/main/s/sshpilot/sshpilot_6.3.6-1_all.deb
 Size: 5222324
-SHA256: 5f0b24603e099bbd40a535f6fa1651b191a0c771995313f7fde8ed1bf16509d9
-SHA1: ef81f5e75e92490b0d347c87cb59c4eb32bcccef
-MD5sum: b806a955abb5b678b0476fb9af7213c8
+SHA256: 8ae8ac5f9d25c3a6d304081ffc0c05b7ccd530c9e23cf92e37870fa5b5fcc078
+SHA1: 460f4f37728a6f6f8ae011f1b743fc4d0b34f08b
+MD5sum: aeee78be0b2a5d223a9f4fb0733219bf
 Description: modern, lightweight SSH connection manager
  SSH Pilot is a user-friendly, modern and lightweight SSH connection manager
  for Linux and macOS, with an integrated terminal and SFTP file manager.
