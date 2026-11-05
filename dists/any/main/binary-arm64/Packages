@@ -1,19 +1,19 @@
 Package: sshpilot
-Version: 6.3.6-1
-Architecture: all
+Version: 6.3.7-1
+Architecture: arm64
 Maintainer: Mehdi <mah.fat@gmail.com>
-Installed-Size: 19778
-Depends: python3:any (>= 3.9~), python3-gi, python3-gi-cairo, gir1.2-gtk-4.0, gir1.2-adw-1 (>= 1.5), gir1.2-vte-3.91, gir1.2-gtksource-5, gir1.2-secret-1, python3-cryptography, python3-keyring, python3-secretstorage, python3-psutil, python3-certifi, python3-yaml, libjs-xterm, openssh-client
-Recommends: sshpass, python3-pykeepass, gir1.2-webkit-6.0, ssh-askpass
+Installed-Size: 20080
+Depends: python3:any (>= 3.9~), libc6, python3-gi, python3-gi-cairo, gir1.2-gtk-4.0, gir1.2-adw-1 (>= 1.5), gir1.2-vte-3.91, gir1.2-gtksource-5, gir1.2-secret-1, python3-cryptography, python3-keyring, python3-secretstorage, python3-psutil, python3-certifi, python3-yaml, libjs-xterm, openssh-client
+Recommends: sshpass, python3-pykeepass, gir1.2-webkit-6.0, libc6 (>= 2.17), libcairo2 (>= 1.2.4), libfreerdp-client3-3 (>= 3.0.0), libfreerdp3-3 (>= 3.0.0), libglib2.0-0t64 (>= 2.79.0), libgtk-4-1 (>= 4.10.0), libwinpr3-3 (>= 3.0.0), gir1.2-girepository-2.0, ssh-askpass
 Suggests: freerdp3-sdl | freerdp3-x11
 Homepage: https://github.com/mfat/sshpilot
 Priority: optional
 Section: net
-Filename: pool/main/s/sshpilot/sshpilot_6.3.6-1_all.deb
-Size: 5222324
-SHA256: 8ae8ac5f9d25c3a6d304081ffc0c05b7ccd530c9e23cf92e37870fa5b5fcc078
-SHA1: 460f4f37728a6f6f8ae011f1b743fc4d0b34f08b
-MD5sum: aeee78be0b2a5d223a9f4fb0733219bf
+Filename: pool/main/s/sshpilot/sshpilot_6.3.7-1_arm64.deb
+Size: 5285160
+SHA256: 3bd91d5e636bade94a9a765da383d57b628cefb4d8a2b159c988b8dace12d34c
+SHA1: 39be4b549b932801973c27a24bd26d5dc2944cc4
+MD5sum: 870999c65ddf53ec966e9cfd55473bd6
 Description: modern, lightweight SSH connection manager
  SSH Pilot is a user-friendly, modern and lightweight SSH connection manager
  for Linux and macOS, with an integrated terminal and SFTP file manager.
